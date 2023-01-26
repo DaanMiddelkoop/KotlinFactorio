@@ -1,8 +1,6 @@
 package graph
 
-import Node
-
-class RoutingNode(override val tag: String) : Node() {
+open class RoutingNode(override val tag: String) : Node() {
     private var switch: Node? = null
 
     // Maybe some more complicated switching when possible like splitting 50/50?

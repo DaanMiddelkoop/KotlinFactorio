@@ -1,7 +1,5 @@
 package graph
 
-import Node
-
 class Path {
     val nodes = mutableListOf<Node>()
 

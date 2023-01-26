@@ -1,9 +1,8 @@
 package graph
 
-import Node
 import recipes.Item
 
-class FactoryNode(override val tag: String) : Node() {
+open class FactoryNode(override val tag: String) : Node() {
     private var item: Item? = null
 
     fun setRecipe(item: Item) {

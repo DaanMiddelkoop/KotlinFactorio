@@ -1,11 +1,9 @@
-import graph.FactoryNode
-import graph.Path
-import graph.RoutingNode
+package graph
 
 abstract class Node {
     abstract val tag: String
-    val incoming = mutableListOf<Node>()
-    val outgoing = mutableListOf<Node>()
+    private val incoming = mutableListOf<Node>()
+    private val outgoing = mutableListOf<Node>()
 
     fun addIncoming(node: Node) {
         incoming.add(node)
@@ -32,7 +30,7 @@ abstract class Node {
                 return Path().reconstruct(next, parents)
             }
 
-            for (i in next.incoming) {
+            for (i in next.getIncoming()) {
                 if (i in seen) continue
                 if (i is RoutingNode && i.hasRoute()) continue
                 if (i is FactoryNode && i.hasRecipe()) continue
@@ -45,6 +43,10 @@ abstract class Node {
     }
 
     override fun toString(): String {
-        return "Node($tag)"
+        return "graph.Node($tag)"
     }
+
+    open fun getIncoming() = incoming.toList()
+    open fun getOutgoing() = outgoing.toList()
+
 }

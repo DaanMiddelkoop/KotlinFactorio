@@ -1,6 +1,6 @@
 import graph.FactoryNode
 import graph.Graph
-import graph.RoutingNode
+import graph.Node
 import recipes.Item
 
 class Builder {
@@ -24,12 +24,12 @@ class Builder {
             val factory = factoryPath.nodes.first() as FactoryNode
 
             // Check if path exists from this factory to input.
-            if (factory.bfs { n -> n.incoming.isEmpty()} != null) {
+            if (factory.bfs { n -> n.getIncoming().isEmpty()} != null) {
                 // commit to this path
                 factory.setRecipe(item)
                 factoryPath.setRouting()
                 for (i in item.ingredients) {
-                    buildNode(i, factory.incoming[0])
+                    buildNode(i, factory.getIncoming()[0])
                 }
                 return
             }

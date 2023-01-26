@@ -1,6 +1,6 @@
 package layouts
 
-import Node
+import graph.Node
 import graph.FactoryNode
 import graph.Graph
 import graph.RoutingNode
